@@ -92,6 +92,7 @@ shouldHaddockPackage :: BuildOpts
                      -> PackageName
                      -> Bool
 shouldHaddockPackage bopts wanted name =
+  if name == $(mkPackageName "esqueleto") then False else
     if Set.member name wanted
         then boptsHaddock bopts
         else shouldHaddockDeps bopts
